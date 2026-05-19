@@ -8,21 +8,16 @@ const complaintRoutes = require("./routes/complaintRoutes");
 const aiRoutes = require("./routes/aiRoutes");
 
 dotenv.config();
-
 connectDB();
 
 const app = express();
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://smart-complaint-management-system-bp82.onrender.com/"
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true
+    origin: "*"
   })
 );
+
 app.use(express.json());
 
 app.get("/", (req, res) => {
