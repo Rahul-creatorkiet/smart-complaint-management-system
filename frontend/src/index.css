@@ -1,0 +1,119 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+}
+
+.auth-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-form {
+  width: 350px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 30px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.auth-form h2 {
+  color: white;
+  text-align: center;
+}
+
+.auth-form input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+}
+
+.auth-form button {
+  width: 100%;
+  padding: 12px;
+  background: #00c6ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.auth-form p {
+  color: white;
+  text-align: center;
+}
+
+.auth-form a {
+  color: yellow;
+  text-decoration: none;
+}
+
+.navbar {
+  background: #111;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar a,
+.navbar button {
+  color: white;
+  margin-left: 15px;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.dashboard,
+.form-container,
+.list-container,
+.analysis-container {
+  padding: 30px;
+  color: white;
+}
+
+.stat-card,
+.complaint-card,
+.result-card {
+  background: rgba(255,255,255,0.15);
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.complaint-form input,
+.complaint-form textarea,
+.analysis-container textarea,
+select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: none;
+}
+
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.status-page {
+  padding: 30px;
+  color: white;
+}
+
+.status-card {
+  background: rgba(255,255,255,0.15);
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
