@@ -9,35 +9,29 @@ const Dashboard = () => {
     resolved: 0
   });
 
-  const fetchDashboardStats = async () => {
-    try {
-      const res = await API.get("/complaints");
-
-      const complaints = res.data;
-
-      const total = complaints.length;
-
-      const pending = complaints.filter(
-        (item) => item.status === "Pending"
-      ).length;
-
-      const resolved = complaints.filter(
-        (item) => item.status === "Resolved"
-      ).length;
-
-      setStats({
-        total,
-        pending,
-        resolved
-      });
-
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
-    fetchDashboardStats();
+    const fetchStats = async () => {
+      try {
+        const res = await API.get("/complaints");
+
+        const complaints = res.data;
+
+        setStats({
+          total: complaints.length,
+          pending: complaints.filter(
+            (c) => c.status === "Pending"
+          ).length,
+          resolved: complaints.filter(
+            (c) => c.status === "Resolved"
+          ).length
+        });
+
+      } catch (error) {
+        console.log("DASHBOARD ERROR:", error.response?.data || error);
+      }
+    };
+
+    fetchStats();
   }, []);
 
   return (

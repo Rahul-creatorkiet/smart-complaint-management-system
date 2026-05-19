@@ -10,20 +10,16 @@ const StatusUpdate = () => {
       const res = await API.get("/complaints");
       setComplaints(res.data);
     } catch (error) {
-      console.log(error);
+      console.log("STATUS PAGE ERROR:", error.response?.data || error);
     }
   };
 
   const updateStatus = async (id, status) => {
     try {
       await API.put(`/complaints/${id}`, { status });
-
-      alert("Status updated successfully");
-
       fetchComplaints();
     } catch (error) {
       console.log(error);
-      alert("Update failed");
     }
   };
 
@@ -36,13 +32,13 @@ const StatusUpdate = () => {
       <Navbar />
 
       <div className="status-page">
-        <h1>Complaint Status Update</h1>
+        <h1>Status Update</h1>
 
         {complaints.map((complaint) => (
           <div key={complaint._id} className="status-card">
             <h3>{complaint.title}</h3>
 
-            <p><strong>Current Status:</strong> {complaint.status}</p>
+            <p>{complaint.status}</p>
 
             <select
               defaultValue={complaint.status}
