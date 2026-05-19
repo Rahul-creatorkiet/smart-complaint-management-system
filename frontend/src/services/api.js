@@ -5,17 +5,16 @@ const API = axios.create({
 });
 
 API.interceptors.request.use(
-  (req) => {
+  (config) => {
     const token = localStorage.getItem("token");
 
+    console.log("TOKEN FOUND:", token);
+
     if (token) {
-      req.headers.Authorization = `Bearer ${token}`;
+      config.headers.Authorization = `Bearer ${token}`;
     }
 
-    console.log("API REQUEST:", req.baseURL + req.url);
-    console.log("TOKEN:", token);
-
-    return req;
+    return config;
   },
   (error) => Promise.reject(error)
 );
