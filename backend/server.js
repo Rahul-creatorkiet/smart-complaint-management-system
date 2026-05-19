@@ -17,7 +17,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://your-frontend-name.onrender.com"
+      "https://smart-complaint-management-system-bp82.onrender.com/"
     ],
     credentials: true
   })
