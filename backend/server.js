@@ -12,7 +12,14 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://smart-complaint-management-system-bp82.onrender.com"
+    ]
+  })
+);
 
 app.use(express.json());
 
