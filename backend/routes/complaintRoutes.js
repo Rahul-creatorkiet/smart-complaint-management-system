@@ -11,10 +11,11 @@ const protect = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
+router.get("/search/location", protect, searchByLocation);
+
 router.post("/", protect, addComplaint);
 router.get("/", protect, getAllComplaints);
 router.put("/:id", protect, updateComplaintStatus);
 router.delete("/:id", protect, deleteComplaint);
-router.get("/search/location", protect, searchByLocation);
 
 module.exports = router;

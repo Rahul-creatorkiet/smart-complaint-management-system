@@ -1,30 +1,26 @@
 const jwt = require("jsonwebtoken");
 
 const protect = (req, res, next) => {
-  let token;
+  try {
+    const authHeader = req.headers.authorization;
 
-  if (
-    req.headers.authorization &&
-    req.headers.authorization.startsWith("Bearer")
-  ) {
-    try {
-      token = req.headers.authorization.split(" ")[1];
-
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-      req.user = decoded;
-
-      next();
-    } catch (error) {
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
       return res.status(401).json({
-        message: "Unauthorized, invalid token"
+        message: "No token provided"
       });
     }
-  }
 
-  if (!token) {
+    const token = authHeader.split(" ")[1];
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    req.user = decoded;
+
+    next();
+
+  } catch (error) {
     return res.status(401).json({
-      message: "Unauthorized, no token provided"
+      message: "Invalid token"
     });
   }
 };
