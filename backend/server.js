@@ -19,6 +19,7 @@ app.use(
       "http://localhost:5173",
       "https://smart-complaint-management-system-bp82.onrender.com/"
     ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
   })
 );
