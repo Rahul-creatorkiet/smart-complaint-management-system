@@ -1,4 +1,6 @@
 const express = require("express");
+const protect = require("../middleware/authMiddleware");
+
 const {
   addComplaint,
   getAllComplaints,
@@ -6,8 +8,6 @@ const {
   deleteComplaint,
   searchByLocation
 } = require("../controllers/complaintController");
-
-const protect = require("../middleware/authMiddleware");
 
 const router = express.Router();
 

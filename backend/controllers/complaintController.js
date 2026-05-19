@@ -35,26 +35,26 @@ const addComplaint = async (req, res) => {
     res.status(201).json(complaint);
 
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.log("ADD COMPLAINT ERROR:", error.message);
+
+    res.status(500).json({
+      message: error.message
+    });
   }
 };
 
 const getAllComplaints = async (req, res) => {
   try {
-    const { category } = req.query;
-
-    let filter = {};
-
-    if (category) {
-      filter.category = category;
-    }
-
-    const complaints = await Complaint.find(filter);
+    const complaints = await Complaint.find();
 
     res.json(complaints);
 
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.log("GET COMPLAINT ERROR:", error.message);
+
+    res.status(500).json({
+      message: error.message
+    });
   }
 };
 
@@ -75,7 +75,9 @@ const updateComplaintStatus = async (req, res) => {
     res.json(complaint);
 
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({
+      message: error.message
+    });
   }
 };
 
@@ -92,11 +94,13 @@ const deleteComplaint = async (req, res) => {
     await complaint.deleteOne();
 
     res.json({
-      message: "Complaint deleted successfully"
+      message: "Deleted successfully"
     });
 
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({
+      message: error.message
+    });
   }
 };
 
@@ -112,7 +116,9 @@ const searchByLocation = async (req, res) => {
     res.json(complaints);
 
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({
+      message: error.message
+    });
   }
 };
 
